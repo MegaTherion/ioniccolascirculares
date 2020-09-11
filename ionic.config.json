@@ -1,0 +1,7 @@
+{
+  "name": "estructuradatos",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
