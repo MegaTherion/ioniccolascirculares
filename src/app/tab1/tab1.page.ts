@@ -7,6 +7,37 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  dato: string;
+  v: Array<string> = new Array<string>(5);
+  entrada: number;
+  salida: number;
+  mensaje = '';
+
+  constructor() {
+    this.entrada = this.salida = -1;
+  }
+
+  vacia(): boolean {
+    return (this.entrada === -1 && this.salida === -1);
+  }
+  llena(): boolean {
+    return ((this.entrada + 1) % 5 === this.salida);
+  }
+  insertar() {
+    if (this.llena()) {
+      this.mensaje = 'Cola llena';
+      return;
+    }
+    else if (this.vacia()) {
+      this.entrada = this.salida = 0;
+    } else {
+      this.entrada = (this.entrada + 1) % 5;
+    }
+    this.v[this.entrada] = this.dato;
+    this.dato = '';
+  }
+  extraer() {
+    // implementar
+  }
 
 }
