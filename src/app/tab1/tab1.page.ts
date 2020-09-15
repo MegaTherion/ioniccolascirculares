@@ -37,6 +37,18 @@ export class Tab1Page {
     this.dato = '';
   }
   extraer() {
+    if (this.vacia()) {
+      this.mensaje = 'Cola vacia';
+      return;
+    }
+    this.mensaje = 'Valor extraido: ' + this.v[this.salida];
+    this.v[this.salida] = '';
+    if (this.salida === this.entrada) {
+      this.salida = this.entrada = -1;
+    }
+    else {
+      this.salida = (this.salida + 1) % 5;
+    }
     // implementar
   }
 
