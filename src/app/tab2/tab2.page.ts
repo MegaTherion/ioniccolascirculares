@@ -13,6 +13,7 @@ export class Tab2Page {
   infija = '';
   postfija = '';
   pila: Pila;
+  resultado: string = '';
 
   constructor() {
     this.pila = new Pila();
@@ -64,6 +65,55 @@ export class Tab2Page {
     while (!this.pila.vacia()) {
       this.agregarApostfija(this.pila.extraer());
     }
+  }
+
+  evaluarPostfija() {
+    let op1: number;
+    let op2: number;
+    let res: number;
+    for (let i = 0; i < this.postfija.length; i++) {
+      const c = this.postfija.charAt(i);
+      switch (c) {
+        case '+':
+          op2 = this.cadenaAnumero( this.pila.extraer() );
+          op1 = this.cadenaAnumero( this.pila.extraer() );
+          res = op1 + op2;
+          this.pila.insertar('' + res);
+          break;
+        case '-':
+          op2 = this.cadenaAnumero( this.pila.extraer() );
+          op1 = this.cadenaAnumero( this.pila.extraer() );
+          res = op1 - op2;
+          this.pila.insertar('' + res);
+          break;
+        case '*':
+          op2 = this.cadenaAnumero( this.pila.extraer() );
+          op1 = this.cadenaAnumero( this.pila.extraer() );
+          res = op1 * op2;
+          this.pila.insertar('' + res);
+          break;
+        case '/':
+          op2 = this.cadenaAnumero( this.pila.extraer() );
+          op1 = this.cadenaAnumero( this.pila.extraer() );
+          res = op1 / op2;
+          this.pila.insertar('' + res);
+          break;
+        case '^':
+          op2 = this.cadenaAnumero( this.pila.extraer() );
+          op1 = this.cadenaAnumero( this.pila.extraer() );
+          res = Math.pow(op1, op2);
+          this.pila.insertar('' + res);
+          break;
+        default:
+          this.pila.insertar(c);
+      }
+      this.pila.ver();
+    }
+    this.resultado = this.pila.extraer();
+  }
+
+  cadenaAnumero(cad: string): number {
+    return +cad;
   }
 
   prioridad(operador: string): number {

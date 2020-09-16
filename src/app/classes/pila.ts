@@ -25,10 +25,7 @@ export class Pila {
     }
 
     ver() {
-      let i: number;
-      for (i = 0; i <= this.cima; i++) {
-        console.log(this.v[i]);
-      }
+      console.log(this.v);
     }
 
     extraer(): string {
