@@ -1,9 +1,12 @@
 export class Pila {
 
-    v: Array<string> = new Array<string>(5);
+    v: Array<string>;
     cima: number;
+    tam: number; // Tamaño de la pila
 
-    constructor() {
+    constructor(n: number) {
+      this.v = new Array<string>(n);
+      this.tam = n;
       this.cima = -1;
     }
 
@@ -12,7 +15,7 @@ export class Pila {
     }
 
     llena(): boolean {
-      return (this.cima === 4);
+      return (this.cima === this.tam - 1);
     }
 
     insertar(dato: string) {

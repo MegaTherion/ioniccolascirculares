@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ListaOrdenada } from '../classes/lista-ordenada';
 
 @Component({
   selector: 'app-tab3',
@@ -7,6 +8,16 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  lista: ListaOrdenada;
 
+  constructor() {
+    this.lista = new ListaOrdenada();
+  }
+
+  verLista() {
+    this.lista.insertar('4');
+    this.lista.insertar('Xiaomi');
+    this.lista.insertar('Samsung');
+    this.lista.ver();
+  }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Pila } from '../classes/pila';
+// import { Pila } from '../classes/pila';
+import { PilaLe } from '../classes/pila-le';
 
 
 
@@ -12,11 +13,11 @@ export class Tab2Page {
 
   infija = '';
   postfija = '';
-  pila: Pila;
-  resultado: string = '';
+  pila: PilaLe;
+  resultado = '';
 
   constructor() {
-    this.pila = new Pila();
+    this.pila = new PilaLe();
   }
 
   // char A[10]; // Arreglo de caracteres en lenguaje C
