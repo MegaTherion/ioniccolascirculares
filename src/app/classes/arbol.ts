@@ -4,6 +4,24 @@ class Nodo {
     izq: Nodo;
     constructor(dato: number) {
         this.dato = dato;
+        this.der = null;
+        this.izq = null;
+    }
+}
+class PilaNodo {
+    v: Array<Nodo> = new Array<Nodo>();
+    constructor() {}
+    vacia(): boolean {
+        return this.v.length === 0;
+    }
+    insertar(n: Nodo) {
+        this.v.push(n);
+    }
+    extraer(): Nodo {
+        if (this.vacia()) {
+            return null;
+        }
+        return this.v.pop();
     }
 }
 class ColaNodo {
@@ -45,6 +63,31 @@ export class Arbol {
             act = this.cola.extraer();
         }
     }
+    recorridoPreordenRecursivo2(n: Nodo) {
+        if (n !== null) {
+            console.log(n.dato);
+            this.recorridoPreordenRecursivo2(n.izq);
+            this.recorridoPreordenRecursivo2(n.der);
+        }
+    }
+    recorridoPreordenRecursivo() {
+        this.recorridoPreordenRecursivo2(this.raiz);
+    }
+    recorridoPreordenNoRecursivo() {
+        let act: Nodo;
+        act = this.raiz;
+        const pila = new PilaNodo();
+        while (act !== null || !pila.vacia()) {
+            if (act !== null) {
+                console.log(act.dato);
+                pila.insertar(act.der);
+                act = act.izq;
+            }
+            else {
+                act = pila.extraer();
+            }
+        }
+    }
     insertar(dato: number) {
         this.raiz = this.insertar2(this.raiz, dato);
     }
@@ -53,7 +96,6 @@ export class Arbol {
             return new Nodo(dato);
         }
         else if (dato > nodo.dato) {
-            console.log(dato);
             nodo.der = this.insertar2(nodo.der, dato);
             return nodo;
         }

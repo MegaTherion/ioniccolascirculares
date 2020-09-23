@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ListaOrdenada } from '../classes/lista-ordenada';
 import { Arbol } from '../classes/arbol';
 
 @Component({
@@ -22,6 +21,12 @@ export class Tab3Page {
   }
 
   verArbol() {
-    // this.arbol.recorridoAmplitud();
+    this.arbol.recorridoAmplitud();
+  }
+  recorridoPreordenRecursivo() {
+    this.arbol.recorridoPreordenRecursivo();
+  }
+  recorridoPreordenNoRecursivo() {
+    this.arbol.recorridoPreordenNoRecursivo();
   }
 }
