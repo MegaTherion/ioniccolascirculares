@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ListaOrdenada } from '../classes/lista-ordenada';
+import { Arbol } from '../classes/arbol';
 
 @Component({
   selector: 'app-tab3',
@@ -8,16 +9,19 @@ import { ListaOrdenada } from '../classes/lista-ordenada';
 })
 export class Tab3Page {
 
-  lista: ListaOrdenada;
+  arbol: Arbol;
 
   constructor() {
-    this.lista = new ListaOrdenada();
+    this.arbol = new Arbol();
+    this.arbol.insertar(7);
+    this.arbol.insertar(4);
+    this.arbol.insertar(5);
+    this.arbol.insertar(9);
+    this.arbol.insertar(8);
+    this.arbol.insertar(11);
   }
 
-  verLista() {
-    this.lista.insertar('4');
-    this.lista.insertar('Xiaomi');
-    this.lista.insertar('Samsung');
-    this.lista.ver();
+  verArbol() {
+    // this.arbol.recorridoAmplitud();
   }
 }
