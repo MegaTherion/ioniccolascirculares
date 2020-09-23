@@ -73,6 +73,14 @@ export class Arbol {
     recorridoPreordenRecursivo() {
         this.recorridoPreordenRecursivo2(this.raiz);
     }
+    recorridoInordenRecursivo2(n: Nodo) {
+        this.recorridoInordenRecursivo2(n.izq);
+        console.log(n.dato);
+        this.recorridoInordenRecursivo2(n.der);
+    }
+    recorridoInordenRecursivo() {
+        this.recorridoInordenRecursivo2(this.raiz);
+    }
     recorridoPreordenNoRecursivo() {
         let act: Nodo;
         act = this.raiz;
@@ -87,6 +95,22 @@ export class Arbol {
                 act = pila.extraer();
             }
         }
+    }
+    recorridoInordenNoRecursivo2(n: Nodo) {
+        // Implementar el recorrido inorden no recursivo
+        // 1. act = raiz
+        // 2. si act no es null
+        //    2.1 colocar el nodo act a la pila
+        //    2.2 act = act.izq
+        //    2.3 repetir desde (2) hasta que act sea null
+        // 3. si act es null y la pila no esta vacia
+        //     3.1 extraer un nodo de la pila y asignar a act
+        //     3.2 mostrar el valor de act
+        //     3.3 act  = act.der
+        // 4 Si act no es null o la pila no esta vacia ir a (2)
+    }
+    recorridoInordenNoRecursivo() {
+        this.recorridoInordenNoRecursivo2(this.raiz);
     }
     insertar(dato: number) {
         this.raiz = this.insertar2(this.raiz, dato);

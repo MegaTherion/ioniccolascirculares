@@ -29,4 +29,7 @@ export class Tab3Page {
   recorridoPreordenNoRecursivo() {
     this.arbol.recorridoPreordenNoRecursivo();
   }
+  recorridoInordenRecursivo() {
+    this.arbol.recorridoInordenRecursivo();
+  }
 }
